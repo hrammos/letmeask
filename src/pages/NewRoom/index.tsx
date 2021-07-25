@@ -2,18 +2,15 @@ import React from 'react'
 
 import illustrationImage from '../../assets/images/illustration.svg'
 import logoImage from '../../assets/images/logo.svg'
-import googleImage from '../../assets/images/google-icon.svg'
 
 import { Button } from '../../components/Button'
 import {
   AsideContainer,
   Container,
   MainContainer,
-  Separator,
-  GoogleButton,
 } from './styles'
 
-export const Home = () => (
+export const NewRoom = () => (
   <Container>
     <AsideContainer>
       <img
@@ -30,23 +27,24 @@ export const Home = () => (
       <div>
         <img src={logoImage} alt="Letmeask" />
 
-        <GoogleButton type="button">
-          <img src={googleImage} alt="Logo do Google" />
-          Crie sua sala com o Google
-        </GoogleButton>
-
-        <Separator>ou entre em uma sala</Separator>
+        <h2>Criar uma nova sala</h2>
 
         <form>
           <input
             type="text"
-            placeholder="Digite o código da sala"
+            placeholder="Nome da sala"
           />
 
           <Button type="submit">
-            Entrar na sala
+            Criar sala
           </Button>
         </form>
+
+        <p>
+          Quer entrar em uma sala existente?
+          {' '}
+          <a href="foo">Clique aqui</a>
+        </p>
       </div>
     </MainContainer>
   </Container>

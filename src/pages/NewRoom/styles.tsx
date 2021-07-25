@@ -55,6 +55,12 @@ export const MainContainer = styled.main`
       align-self: center!important;
     }
 
+    h2 {
+      font-size: 24px;
+      margin: 64px 0 24px;
+      font-family: 'Poppins', sans-serif;
+    }
+
     form {
       input, button {
         width: 100%;
@@ -72,53 +78,15 @@ export const MainContainer = styled.main`
         margin-top: 16px;
       }
     }
-  }
-`
 
-export const GoogleButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    p {
+      font-size: 14px;
+      color: #737380;
+      margin-top: 16px;
 
-  margin-top: 64px;
-  height: 50px;
-  border-radius: 8px;
-  font-weight: 500;
-  background: #ea4335;
-  color: #fff;
-  cursor: pointer;
-  border: 0;
-  transition: filter 0.3s;
-
-  img {
-    margin-right: 8px;
-  }
-
-  &:hover {
-    filter: brightness(0.9);
-  }
-`
-
-export const Separator = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  color: #a8a8b3;
-  margin: 32px 0;
-
-  &::before {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: #a8a8b3;
-    margin-right: 16px;
-  }
-
-  &::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: #a8a8b3;
-    margin-left: 16px;
+      a {
+        color: #e559f9;
+      }
+    }
   }
 `

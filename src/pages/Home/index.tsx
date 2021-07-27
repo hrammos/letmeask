@@ -1,4 +1,6 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
 
 import illustrationImage from '../../assets/images/illustration.svg'
 import logoImage from '../../assets/images/logo.svg'
@@ -13,41 +15,55 @@ import {
   GoogleButton,
 } from './styles'
 
-export const Home = () => (
-  <Container>
-    <AsideContainer>
-      <img
-        src={illustrationImage}
-        alt="Ilustração simbolizando perguntas e respostas"
-      />
+export const Home = () => {
+  const history = useHistory()
+  const { user, signInWithGoogle } = useAuth()
 
-      <strong>Crie salas de Q&amp;A ao vivo</strong>
+  const onClickHandleCreateRoom = async () => {
+    if (!user) await signInWithGoogle()
 
-      <p>Tire as dúvidas da sua audiência em tempo-real</p>
-    </AsideContainer>
+    history.push('/rooms/new')
+  }
 
-    <MainContainer>
-      <div>
-        <img src={logoImage} alt="Letmeask" />
+  return (
+    <Container>
+      <AsideContainer>
+        <img
+          src={illustrationImage}
+          alt="Ilustração simbolizando perguntas e respostas"
+        />
 
-        <GoogleButton type="button">
-          <img src={googleImage} alt="Logo do Google" />
-          Crie sua sala com o Google
-        </GoogleButton>
+        <strong>Crie salas de Q&amp;A ao vivo</strong>
 
-        <Separator>ou entre em uma sala</Separator>
+        <p>Tire as dúvidas da sua audiência em tempo-real</p>
+      </AsideContainer>
 
-        <form>
-          <input
-            type="text"
-            placeholder="Digite o código da sala"
-          />
+      <MainContainer>
+        <div>
+          <img src={logoImage} alt="Letmeask" />
 
-          <Button type="submit">
-            Entrar na sala
-          </Button>
-        </form>
-      </div>
-    </MainContainer>
-  </Container>
-)
+          <GoogleButton
+            onClick={onClickHandleCreateRoom}
+            type="button"
+          >
+            <img src={googleImage} alt="Logo do Google" />
+            Crie sua sala com o Google
+          </GoogleButton>
+
+          <Separator>ou entre em uma sala</Separator>
+
+          <form>
+            <input
+              type="text"
+              placeholder="Digite o código da sala"
+            />
+
+            <Button type="submit">
+              Entrar na sala
+            </Button>
+          </form>
+        </div>
+      </MainContainer>
+    </Container>
+  )
+}

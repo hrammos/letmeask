@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import illustrationImage from '../../assets/images/illustration.svg'
 import logoImage from '../../assets/images/logo.svg'
@@ -43,7 +44,7 @@ export const NewRoom = () => (
         <p>
           Quer entrar em uma sala existente?
           {' '}
-          <a href="foo">Clique aqui</a>
+          <Link to="/">Clique aqui</Link>
         </p>
       </div>
     </MainContainer>

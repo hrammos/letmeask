@@ -3,13 +3,15 @@ import React from 'react'
 import logoImage from '../../assets/images/logo.svg'
 import { Button } from '../../components/Button'
 
-import { Container, Header, Main } from './styles'
+import {
+  Header, Main, Form, FormFooter
+} from './styles'
 
 export const Room = () => {
   const a = 'b'
 
   return (
-    <Container>
+    <div>
       <Header>
         <div>
           <img src={logoImage} alt="Letmeask" />
@@ -23,10 +25,10 @@ export const Room = () => {
           <span>4 perguntas</span>
         </div>
 
-        <form>
+        <Form>
           <textarea placeholder="O que você quer perguntar?" />
 
-          <div>
+          <FormFooter>
             <span>
               Para enviar uma pergunta,
               {' '}
@@ -34,9 +36,9 @@ export const Room = () => {
               .
             </span>
             <Button type="submit">Enviar pergunta</Button>
-          </div>
-        </form>
+          </FormFooter>
+        </Form>
       </Main>
-    </Container>
+    </div>
   )
 }

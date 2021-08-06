@@ -1,15 +1,15 @@
 import React, { useState, FormEvent } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import illustrationImage from '../../assets/images/illustration.svg'
-import logoImage from '../../assets/images/logo.svg'
-import googleImage from '../../assets/images/google-icon.svg'
+import { useAuth } from 'hooks/useAuth'
+import illustrationImage from 'assets/images/illustration.svg'
+import logoImage from 'assets/images/logo.svg'
+import googleImage from 'assets/images/google-icon.svg'
 
-import { useAuth } from '../../hooks/useAuth'
+import { database } from 'services/firebase'
 
-import { database } from '../../services/firebase'
+import { Button } from 'components/Button'
 
-import { Button } from '../../components/Button'
 import {
   AsideContainer,
   Container,

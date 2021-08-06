@@ -1,21 +1,29 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
-import logoImage from '../../assets/images/logo.svg'
-import { Button } from '../../components/Button'
+import { Button, RoomCode } from 'components'
+import logoImage from 'assets/images/logo.svg'
 
 import {
-  Header, Main, Form, FormFooter
+  Header,
+  Main,
+  Form,
+  FormFooter,
 } from './styles'
 
+type RoomParams = {
+  id: string
+}
+
 export const Room = () => {
-  const a = 'b'
+  const params = useParams<RoomParams>()
 
   return (
     <div>
       <Header>
         <div>
           <img src={logoImage} alt="Letmeask" />
-          <div>código</div>
+          <RoomCode code={params.id} />
         </div>
       </Header>
 

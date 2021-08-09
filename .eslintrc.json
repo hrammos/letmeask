@@ -154,6 +154,7 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "jest-dom/prefer-in-document": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "react/require-default-props": [0, {}],
     "react/jsx-props-no-spreading": "off",
     "import/extensions": [
       "error",

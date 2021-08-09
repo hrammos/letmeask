@@ -8,7 +8,6 @@ import React, {
 
 import { auth, firebase } from 'services/firebase'
 
-
 type TUser = {
   id: string
   name: string

@@ -15,6 +15,15 @@ export const Header = styled.header`
     > img {
       max-height: 45px;
     }
+
+    > div {
+      display: flex;
+      gap: 16px;
+
+      button {
+        height: 40px;
+      }
+    }
   }
 `
 

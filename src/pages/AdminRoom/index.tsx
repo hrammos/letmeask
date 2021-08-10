@@ -6,6 +6,9 @@ import logoImage from 'assets/images/logo.svg'
 import { Button, Question, RoomCode } from 'components'
 
 import { RoomInfos } from 'pages/Room/styles'
+import deleteImage from 'assets/images/delete.svg'
+
+import { database } from 'services/firebase'
 import {
   Header,
   Main,
@@ -21,6 +24,12 @@ export const AdminRoom = () => {
   const roomId = params.id
 
   const { title, questions } = useRoom(roomId)
+
+  const onClickDeleteQuestion = async (questionId: string) => {
+    if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+    }
+  }
 
   return (
     <div>
@@ -47,7 +56,14 @@ export const AdminRoom = () => {
             key={question.id}
             content={question.content}
             author={question.author}
-          />
+          >
+            <button
+              type="button"
+              onClick={() => onClickDeleteQuestion(question.id)}
+            >
+              <img src={deleteImage} alt="Remover pergunta" />
+            </button>
+          </Question>
         ))}
       </Main>
     </div>

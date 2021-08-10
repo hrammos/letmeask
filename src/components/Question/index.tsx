@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-import { Container, FooterQuestion } from './styles'
+import { Container, FooterQuestion, LikeButton } from './styles'
 
 type TQuestionProps = {
   content: string
-  author: {
-    name: string
-    avatar: string
-  }
+  author: TAuthor
+  children?: ReactNode
+  hasLiked?: boolean
 }
 
 export const Question = (props: TQuestionProps) => {
-  const { content, author } = props
+  const {
+    content,
+    author,
+    children,
+    hasLiked = false
+  } = props
 
   return (
     <Container>
@@ -22,7 +26,8 @@ export const Question = (props: TQuestionProps) => {
           <img src={author.avatar} alt={author.name} />
           <span>{author.name}</span>
         </div>
-        <div />
+        {/* <LikeButton /> */}
+        <LikeButton liked={hasLiked}>{children}</LikeButton>
       </FooterQuestion>
     </Container>
   )

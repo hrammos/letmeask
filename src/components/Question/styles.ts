@@ -39,5 +39,41 @@ export const FooterQuestion = styled.footer`
       font-size: 14px;
     }
   }
+
+  button {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+`
+
+type LikeButtonProps = {
+  liked: boolean
+}
+
+export const LikeButton = styled.div<LikeButtonProps>`
+  display: flex;
+  align-items: center;
+  color: ${props => (props.liked ? '#835afd' : '#737380')};
+
+  button span {
+    position: relative;
+    top: -3px;
+    color: ${props => (props.liked ? '#835afd' : '#737380')};
+  }
+
+  svg {
+    margin-left: 8px;
+  }
+
+  svg path {
+    stroke: ${props => (props.liked && '#835afd')};
+  }
+
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.7)
+  }
 `
 

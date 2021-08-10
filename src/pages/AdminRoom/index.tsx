@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useRoom } from 'hooks/useRoom'
 
 import logoImage from 'assets/images/logo.svg'
@@ -20,6 +20,7 @@ type RoomParams = {
 
 export const AdminRoom = () => {
   const params = useParams<RoomParams>()
+  const history = useHistory()
 
   const roomId = params.id
 
@@ -31,6 +32,14 @@ export const AdminRoom = () => {
     }
   }
 
+  const onClickEndRoom = async () => {
+    await database.ref(`rooms/${roomId}`).update({
+      endedAt: new Date(),
+    })
+
+    history.push('/')
+  }
+
   return (
     <div>
       <Header>
@@ -38,7 +47,12 @@ export const AdminRoom = () => {
           <img src={logoImage} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined>Encerrar sala</Button>
+            <Button
+              isOutlined
+              onClick={onClickEndRoom}
+            >
+              Encerrar sala
+            </Button>
           </div>
         </div>
       </Header>

@@ -7,6 +7,8 @@ type TQuestionProps = {
   author: TAuthor
   children?: ReactNode
   hasLiked?: boolean
+  isAnswered?: boolean
+  isHighlighted?: boolean
 }
 
 export const Question = (props: TQuestionProps) => {
@@ -14,11 +16,16 @@ export const Question = (props: TQuestionProps) => {
     content,
     author,
     children,
-    hasLiked = false
+    hasLiked = false,
+    isAnswered = false,
+    isHighlighted = false
   } = props
 
   return (
-    <Container>
+    <Container
+      answered={isAnswered}
+      highlighted={isHighlighted}
+    >
       <p>{content}</p>
 
       <FooterQuestion>

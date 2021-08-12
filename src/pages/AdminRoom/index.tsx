@@ -7,6 +7,8 @@ import { Button, Question, RoomCode } from 'components'
 
 import { RoomInfos } from 'pages/Room/styles'
 import deleteImage from 'assets/images/delete.svg'
+import checkImage from 'assets/images/check.svg'
+import answerImage from 'assets/images/answer.svg'
 
 import { database } from 'services/firebase'
 import {
@@ -30,6 +32,18 @@ export const AdminRoom = () => {
     if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
     }
+  }
+
+  const onClickQuestionAsAnswered = async (questionId: string) => {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true,
+    })
+  }
+
+  const onClickHighlightQuestion = async (questionId: string) => {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isHighlighted: true,
+    })
   }
 
   const onClickEndRoom = async () => {
@@ -70,7 +84,27 @@ export const AdminRoom = () => {
             key={question.id}
             content={question.content}
             author={question.author}
+            isAnswered={question.isAnswered}
+            isHighlighted={question.isHighlighted}
           >
+            {!question.isAnswered && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => onClickQuestionAsAnswered(question.id)}
+                >
+                  <img src={checkImage} alt="Marcar pergunta como respondida" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => onClickHighlightQuestion(question.id)}
+                >
+                  <img src={answerImage} alt="Dar destaque à pergunta" />
+                </button>
+              </>
+            )}
+
             <button
               type="button"
               onClick={() => onClickDeleteQuestion(question.id)}
